@@ -1,0 +1,100 @@
+<style>
+	body {
+		background-color: #f9fafb;
+		min-height: 100vh;
+	}
+
+	.form {
+		width: 600px;
+		margin: 50px auto;
+	}
+
+	.form-control {
+		margin-bottom: 10px;
+		padding-bottom: 20px;
+		position: relative;
+		width: 100%;
+	}
+
+	.form-control label {
+		color: #777;
+		display: block;
+		margin-bottom: 5px;
+	}
+</style>
+<div class="form">
+	<form id="test-form">
+		<h2>表单测试</h2>
+		<div class="form-control">
+			<label for="username">普通输入框</label>
+			<input type="text" name="username" placeholder="请输入用户名" />
+		</div>
+		<div class="form-control">
+			<label for="email">文本域输入框</label>
+			<textarea placeholder="请输入备注" name="email"></textarea>
+		</div>
+		<div class="form-control">
+			<label for="password">复选</label>
+			<div class="checkbox">
+				<input type="checkbox" name="checkboxdata" class="ant-checkbox-input"> a
+				<input type="checkbox" name="checkboxdata" class="ant-checkbox-input" value="b"> b
+				<input type="checkbox" name="checkboxdata" class="ant-checkbox-input" value="c"> c
+			</div>
+		</div>
+		<div class="form-control">
+			<label for="password">单选</label>
+			<div class="checkbox">
+				<input type="radio" name="radiodata" class="ant-checkbox-input"> a
+				<input type="radio" name="radiodata" class="ant-checkbox-input" value="b"> b
+				<input type="radio" name="radiodata" class="ant-checkbox-input" value="c"> c
+			</div>
+		</div>
+		<div class="form-control">
+			<label for="password2">联动select</label>
+			<select name="s1" id="s1" onchange="setS2()">
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select>
+			<select name="s2" id="s2"></select>
+		</div>
+		<div class="form-control">
+			<label>button动态增加内容</label>
+			<input type="button" name="addbutton" onclick="addButton()" value="点击添加">
+		</div>
+		<div class="form-control">
+			<label>自定义span动态增加内容</label>
+			<span style="border:1px solid" type="button" name="addspan" onclick="addSpan()">点击添加</span>
+		</div>
+		<div form-restore-custom>
+			<div>自定义表单</div>
+			<span style="border:1px solid" onclick="addCustom()">点击添加</span>
+			<div id="custom" form-restore-custom-content>
+				<input type="text">
+			</div>
+		</div>
+	</form>
+	<button onclick="record.holdForm()">暂存</button>
+	<button onclick="record.recoverForm()">恢复</button>
+</div>
+<script>
+	var form = document.querySelector('#test-form');
+	var custom = document.querySelector('[form-restore-custom-content]');
+	function setS2() {
+		setTimeout(() => {
+			var s2 = document.querySelector('#s2')
+			s2.innerHTML = '<option value="1">11</option><option value="2">22</option>'
+		}, 1000);
+	}
+
+	function addButton() {
+		form.append('button动态增加的内容')
+	}
+
+	function addSpan() {
+		form.append('span动态增加的内容')
+	}
+
+	function addCustom() {
+		custom.innerHTML = '<input type="text"><span>custom</span><input type="text">'
+	}
+</script>

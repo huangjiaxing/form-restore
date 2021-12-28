@@ -1,0 +1,52 @@
+{
+  "name": "form-restore",
+  "version": "0.0.1",
+  "description": "表单暂存方案",
+  "scripts": {
+    "cz": "git cz -a",
+    "test": "jest --coverage",
+    "lint": "commander-tools run lint",
+    "fix": "commander-tools run lint --fix",
+    "staged": "commander-tools run lint --staged",
+    "staged-fix": "commander-tools run lint --staged --fix",
+    "dev": "commander-tools run dev",
+    "compile": "commander-tools run compile",
+    "dist": "commander-tools run dist",
+    "analyz": "commander-tools run dist --analyz",
+    "build": "commander-tools run build",
+    "pub": "commander-tools run pub",
+    "pub-beta": "commander-tools run pub-beta",
+    "unpub": "commander-tools run unpub",
+    "doc": "commander-tools run doc",
+    "build-doc": "commander-tools run build-doc",
+    "doc-upload": "commander-tools run doc-upload"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "keywords": [
+    "sdk",
+    "npm",
+    "import"
+  ],
+  "author": "huangjiaxing <huangjiaxing@zhuanzhuan.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "core-js": "^3.6.5"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "zz-commander-tools": "^1.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@zz-common/commander-tools/lib/config/commitizen.config"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commander-tools run commitlint"
+    }
+  }
+}
